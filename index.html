@@ -42,7 +42,7 @@
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[35.380005779837795,138.84319325207193],[35.86833063367851,140.21921126176036]]);
+        }).fitBounds([[35.34034438197662,138.89039553306955],[35.82891060479844,140.266413542758]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -198,8 +198,8 @@
                         <td>' + (feature.properties['town'] !== null ? autolinker.link(String(feature.properties['town']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">status</th>\
-                        <td>' + (feature.properties['status'] !== null ? autolinker.link(String(feature.properties['status']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">status_txt</th>\
+                        <td>' + (feature.properties['status_txt'] !== null ? autolinker.link(String(feature.properties['status_txt']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -210,8 +210,8 @@
         }
 
         function style_kanagawatownkaikanagawatown_2_0(feature) {
-            switch(String(feature.properties['status'])) {
-                case 'True':
+            switch(String(feature.properties['status_txt'])) {
+                case 'true':
                     return {
                 pane: 'pane_kanagawatownkaikanagawatown_2',
                 opacity: 1,
@@ -322,8 +322,8 @@
                         <td>' + (feature.properties['town'] !== null ? autolinker.link(String(feature.properties['town']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">status</th>\
-                        <td>' + (feature.properties['status'] !== null ? autolinker.link(String(feature.properties['status']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">status_txt</th>\
+                        <td>' + (feature.properties['status_txt'] !== null ? autolinker.link(String(feature.properties['status_txt']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -334,12 +334,12 @@
         }
 
         function style_tokyotownkaitokyotown_4_0(feature) {
-            switch(String(feature.properties['status'])) {
-                case 'True':
+            switch(String(feature.properties['status_txt'])) {
+                case 'true':
                     return {
                 pane: 'pane_tokyotownkaitokyotown_4',
                 opacity: 1,
-                color: 'rgba(255,127,0,1.0)',
+                color: 'rgba(224,116,54,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
