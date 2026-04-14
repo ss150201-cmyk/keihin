@@ -36,13 +36,13 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet.photon.js"></script>
         <script src="data/kanagawacitycrs_1.js"></script>
-        <script src="data/kanagawatownkaikanagawatown_2.js"></script>
+        <script src="data/kanagawa_town_2.js"></script>
         <script src="data/tokyocitycrs_3.js"></script>
-        <script src="data/tokyotownkaitokyotown_4.js"></script>
+        <script src="data/tokyo_town_4.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[35.34034438197662,138.89039553306955],[35.82891060479844,140.266413542758]]);
+        }).fitBounds([[35.56223058234782,139.26752265643532],[35.80621062091568,139.94964721888434]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -183,23 +183,23 @@
         });
         bounds_group.addLayer(layer_kanagawacitycrs_1);
         map.addLayer(layer_kanagawacitycrs_1);
-        function pop_kanagawatownkaikanagawatown_2(feature, layer) {
+        function pop_kanagawa_town_2(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">pref</th>\
-                        <td>' + (feature.properties['pref'] !== null ? autolinker.link(String(feature.properties['pref']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">都道府県</th>\
+                        <td>' + (feature.properties['都道府県'] !== null ? autolinker.link(String(feature.properties['都道府県']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">city</th>\
-                        <td>' + (feature.properties['city'] !== null ? autolinker.link(String(feature.properties['city']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">市区町村</th>\
+                        <td>' + (feature.properties['市区町村'] !== null ? autolinker.link(String(feature.properties['市区町村']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">town</th>\
-                        <td>' + (feature.properties['town'] !== null ? autolinker.link(String(feature.properties['town']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">町丁目</th>\
+                        <td>' + (feature.properties['町丁目'] !== null ? autolinker.link(String(feature.properties['町丁目']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">status_txt</th>\
-                        <td>' + (feature.properties['status_txt'] !== null ? autolinker.link(String(feature.properties['status_txt']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">進捗状況</th>\
+                        <td>' + (feature.properties['進捗状況'] !== null ? autolinker.link(String(feature.properties['進捗状況']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -209,47 +209,62 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_kanagawatownkaikanagawatown_2_0(feature) {
-            switch(String(feature.properties['status_txt'])) {
-                case 'true':
+        function style_kanagawa_town_2_0(feature) {
+            switch(String(feature.properties['進捗状況'])) {
+                case '0':
                     return {
-                pane: 'pane_kanagawatownkaikanagawatown_2',
+                pane: 'pane_kanagawa_town_2',
+                stroke: false, 
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '1':
+                    return {
+                pane: 'pane_kanagawa_town_2',
                 opacity: 1,
-                color: 'rgba(224,116,54,1.0)',
+                color: 'rgba(224,116,54,0.4)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(255,127,0,1.0)',
+                fillColor: 'rgba(255,127,0,0.4)',
                 interactive: true,
             }
                     break;
                 default:
                     return {
-                pane: 'pane_kanagawatownkaikanagawatown_2',
-                stroke: false, 
-                fillOpacity: 0,
+                pane: 'pane_kanagawa_town_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.4)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(228,108,174,0.4)',
                 interactive: true,
             }
                     break;
             }
         }
-        map.createPane('pane_kanagawatownkaikanagawatown_2');
-        map.getPane('pane_kanagawatownkaikanagawatown_2').style.zIndex = 402;
-        map.getPane('pane_kanagawatownkaikanagawatown_2').style['mix-blend-mode'] = 'normal';
-        var layer_kanagawatownkaikanagawatown_2 = new L.geoJson(json_kanagawatownkaikanagawatown_2, {
+        map.createPane('pane_kanagawa_town_2');
+        map.getPane('pane_kanagawa_town_2').style.zIndex = 402;
+        map.getPane('pane_kanagawa_town_2').style['mix-blend-mode'] = 'normal';
+        var layer_kanagawa_town_2 = new L.geoJson(json_kanagawa_town_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_kanagawatownkaikanagawatown_2',
-            layerName: 'layer_kanagawatownkaikanagawatown_2',
-            pane: 'pane_kanagawatownkaikanagawatown_2',
-            onEachFeature: pop_kanagawatownkaikanagawatown_2,
-            style: style_kanagawatownkaikanagawatown_2_0,
+            dataVar: 'json_kanagawa_town_2',
+            layerName: 'layer_kanagawa_town_2',
+            pane: 'pane_kanagawa_town_2',
+            onEachFeature: pop_kanagawa_town_2,
+            style: style_kanagawa_town_2_0,
         });
-        bounds_group.addLayer(layer_kanagawatownkaikanagawatown_2);
-        map.addLayer(layer_kanagawatownkaikanagawatown_2);
+        bounds_group.addLayer(layer_kanagawa_town_2);
+        map.addLayer(layer_kanagawa_town_2);
         function pop_tokyocitycrs_3(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
@@ -307,23 +322,23 @@
         });
         bounds_group.addLayer(layer_tokyocitycrs_3);
         map.addLayer(layer_tokyocitycrs_3);
-        function pop_tokyotownkaitokyotown_4(feature, layer) {
+        function pop_tokyo_town_4(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">pref</th>\
-                        <td>' + (feature.properties['pref'] !== null ? autolinker.link(String(feature.properties['pref']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">都道府県</th>\
+                        <td>' + (feature.properties['都道府県'] !== null ? autolinker.link(String(feature.properties['都道府県']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">city</th>\
-                        <td>' + (feature.properties['city'] !== null ? autolinker.link(String(feature.properties['city']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">市区町村</th>\
+                        <td>' + (feature.properties['市区町村'] !== null ? autolinker.link(String(feature.properties['市区町村']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">town</th>\
-                        <td>' + (feature.properties['town'] !== null ? autolinker.link(String(feature.properties['town']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">町丁目</th>\
+                        <td>' + (feature.properties['町丁目'] !== null ? autolinker.link(String(feature.properties['町丁目']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">status_txt</th>\
-                        <td>' + (feature.properties['status_txt'] !== null ? autolinker.link(String(feature.properties['status_txt']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">進捗状況</th>\
+                        <td>' + (feature.properties['進捗状況'] !== null ? autolinker.link(String(feature.properties['進捗状況']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -333,47 +348,62 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_tokyotownkaitokyotown_4_0(feature) {
-            switch(String(feature.properties['status_txt'])) {
-                case 'true':
+        function style_tokyo_town_4_0(feature) {
+            switch(String(feature.properties['進捗状況'])) {
+                case '0':
                     return {
-                pane: 'pane_tokyotownkaitokyotown_4',
+                pane: 'pane_tokyo_town_4',
+                stroke: false, 
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '1':
+                    return {
+                pane: 'pane_tokyo_town_4',
                 opacity: 1,
-                color: 'rgba(224,116,54,1.0)',
+                color: 'rgba(224,116,54,0.4)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(255,127,0,1.0)',
+                fillColor: 'rgba(255,127,0,0.4)',
                 interactive: true,
             }
                     break;
                 default:
                     return {
-                pane: 'pane_tokyotownkaitokyotown_4',
-                stroke: false, 
-                fillOpacity: 0,
+                pane: 'pane_tokyo_town_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.4)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(228,108,174,0.4)',
                 interactive: true,
             }
                     break;
             }
         }
-        map.createPane('pane_tokyotownkaitokyotown_4');
-        map.getPane('pane_tokyotownkaitokyotown_4').style.zIndex = 404;
-        map.getPane('pane_tokyotownkaitokyotown_4').style['mix-blend-mode'] = 'normal';
-        var layer_tokyotownkaitokyotown_4 = new L.geoJson(json_tokyotownkaitokyotown_4, {
+        map.createPane('pane_tokyo_town_4');
+        map.getPane('pane_tokyo_town_4').style.zIndex = 404;
+        map.getPane('pane_tokyo_town_4').style['mix-blend-mode'] = 'normal';
+        var layer_tokyo_town_4 = new L.geoJson(json_tokyo_town_4, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_tokyotownkaitokyotown_4',
-            layerName: 'layer_tokyotownkaitokyotown_4',
-            pane: 'pane_tokyotownkaitokyotown_4',
-            onEachFeature: pop_tokyotownkaitokyotown_4,
-            style: style_tokyotownkaitokyotown_4_0,
+            dataVar: 'json_tokyo_town_4',
+            layerName: 'layer_tokyo_town_4',
+            pane: 'pane_tokyo_town_4',
+            onEachFeature: pop_tokyo_town_4,
+            style: style_tokyo_town_4_0,
         });
-        bounds_group.addLayer(layer_tokyotownkaitokyotown_4);
-        map.addLayer(layer_tokyotownkaitokyotown_4);
+        bounds_group.addLayer(layer_tokyo_town_4);
+        map.addLayer(layer_tokyo_town_4);
         setBounds();
         </script>        
     </body>
