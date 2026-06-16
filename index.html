@@ -42,7 +42,7 @@
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[35.181893791420976,138.94704800937208],[35.91015363142617,140.5272344546664]]);
+        }).fitBounds([[35.23822933440029,138.6597371204575],[35.878188374399954,140.35933160354264]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -223,7 +223,7 @@
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(255,127,0,0.4)',
+                fillColor: 'rgba(255,127,0,0.5)',
                 interactive: true,
             }
                     break;
@@ -233,7 +233,7 @@
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(166,206,227,0.4)',
+                fillColor: 'rgba(84,196,255,0.5)',
                 interactive: true,
             }
                     break;
@@ -243,7 +243,7 @@
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(178,223,138,0.4)',
+                fillColor: 'rgba(122,231,25,0.5)',
                 interactive: true,
             }
                     break;
@@ -253,7 +253,17 @@
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(253,191,111,0.4)',
+                fillColor: 'rgba(255,103,244,0.5)',
+                interactive: true,
+            }
+                    break;
+                case '5':
+                    return {
+                pane: 'pane_kanagawa_town_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,255,0,0.5)',
                 interactive: true,
             }
                     break;
@@ -378,7 +388,7 @@
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(255,127,0,0.4)',
+                fillColor: 'rgba(255,127,0,0.5)',
                 interactive: true,
             }
                     break;
@@ -388,7 +398,7 @@
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(166,206,227,0.4)',
+                fillColor: 'rgba(84,196,255,0.5)',
                 interactive: true,
             }
                     break;
@@ -398,7 +408,7 @@
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(178,223,138,0.4)',
+                fillColor: 'rgba(122,231,25,0.5)',
                 interactive: true,
             }
                     break;
@@ -408,7 +418,17 @@
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(253,191,111,0.4)',
+                fillColor: 'rgba(255,103,244,0.5)',
+                interactive: true,
+            }
+                    break;
+                case '5':
+                    return {
+                pane: 'pane_tokyo_town_4',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,255,0,0.5)',
                 interactive: true,
             }
                     break;
