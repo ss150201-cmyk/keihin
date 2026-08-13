@@ -42,7 +42,7 @@
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[35.26112356430758,138.7307355967369],[35.77559164430795,140.2538729123744]]);
+        }).fitBounds([[35.18127370381144,138.5743627879199],[35.88944746381158,140.31287132169072]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -69,9 +69,20 @@
                 var src = imgTd.getAttribute('src');
                 if (/\.(jpg|jpeg|png|gif|bmp|webp|avif)$/i.test(src)) {
                     popup._contentNode.classList.add('media');
-                    setTimeout(function() {
-                        popup.update();
-                    }, 10);
+                    var img = popup._contentNode.querySelector('td img');
+                    if (img) {
+                        // If already loaded (cache), update immediately
+                        if (img.complete && img.naturalHeight > 0) {
+                            popup.update();
+                        } else {
+                            img.addEventListener('load', function() {
+                                popup.update();
+                            });
+                            img.addEventListener('error', function() {
+                                popup.update();
+                            });
+                        }
+                    }
                 } else if (/\.(mp3|wav|ogg|aac)$/i.test(src)) {
                     var audio = document.createElement('audio');
                     audio.controls = true;
@@ -233,7 +244,7 @@
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(84,196,255,0.5)',
+                fillColor: 'rgba(0,22,255,0.5)',
                 interactive: true,
             }
                     break;
@@ -243,7 +254,7 @@
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(122,231,25,0.5)',
+                fillColor: 'rgba(37,255,0,0.5)',
                 interactive: true,
             }
                     break;
@@ -253,7 +264,7 @@
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(255,103,244,0.5)',
+                fillColor: 'rgba(249,0,255,0.5)',
                 interactive: true,
             }
                     break;
@@ -264,6 +275,36 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(253,255,0,0.5)',
+                interactive: true,
+            }
+                    break;
+                case '6':
+                    return {
+                pane: 'pane_kanagawa_town_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(84,196,255,0.5)',
+                interactive: true,
+            }
+                    break;
+                case '7':
+                    return {
+                pane: 'pane_kanagawa_town_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(157,228,94,0.5)',
+                interactive: true,
+            }
+                    break;
+                case '8':
+                    return {
+                pane: 'pane_kanagawa_town_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,170,249,0.5)',
                 interactive: true,
             }
                     break;
@@ -398,7 +439,7 @@
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(84,196,255,0.5)',
+                fillColor: 'rgba(0,22,255,0.5)',
                 interactive: true,
             }
                     break;
@@ -408,7 +449,7 @@
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(122,231,25,0.5)',
+                fillColor: 'rgba(37,255,0,0.5)',
                 interactive: true,
             }
                     break;
@@ -418,7 +459,7 @@
                 stroke: false, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(255,103,244,0.5)',
+                fillColor: 'rgba(249,0,255,0.5)',
                 interactive: true,
             }
                     break;
@@ -429,6 +470,36 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(253,255,0,0.5)',
+                interactive: true,
+            }
+                    break;
+                case '6':
+                    return {
+                pane: 'pane_tokyo_town_4',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(84,196,255,0.5)',
+                interactive: true,
+            }
+                    break;
+                case '7':
+                    return {
+                pane: 'pane_tokyo_town_4',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(157,228,94,0.5)',
+                interactive: true,
+            }
+                    break;
+                case '8':
+                    return {
+                pane: 'pane_tokyo_town_4',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,170,249,0.5)',
                 interactive: true,
             }
                     break;
